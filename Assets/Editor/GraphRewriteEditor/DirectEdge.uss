@@ -1,0 +1,9 @@
+:hover #line {
+    background-color: rgb(255, 0, 22);
+}
+
+:selected #line {
+}
+
+:checked #line {
+}

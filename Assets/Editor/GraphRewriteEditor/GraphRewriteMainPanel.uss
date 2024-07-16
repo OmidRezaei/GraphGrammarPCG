@@ -1,0 +1,7 @@
+.listview-title {
+    margin-left: 4px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    padding-left: 8px;
+}

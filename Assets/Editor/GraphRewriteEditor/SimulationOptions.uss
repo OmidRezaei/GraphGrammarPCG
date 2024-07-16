@@ -1,0 +1,23 @@
+.start-button {
+    background-image: resource('d_Animation.Play');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.reset-button {
+    -unity-background-scale-mode: scale-to-fit;
+    background-image: resource('d_Refresh@2x');
+}
+
+.step-back-button {
+    background-image: resource('d_Animation.PrevKey');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.step-forward-button {
+    background-image: resource('d_Animation.NextKey');
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.short-label-field > Label {
+    min-width: auto;
+}

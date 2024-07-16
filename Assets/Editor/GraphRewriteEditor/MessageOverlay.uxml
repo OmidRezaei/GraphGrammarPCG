@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/GraphRewriteEditor/MessageOverlay.uss?fileID=7433441132597879392&amp;guid=5bf876e631276d1428097bd5113f809a&amp;type=3#MessageOverlay" />
+    <ui:VisualElement name="message-overlay" style="flex-grow: 1; display: flex;">
+        <ui:Label tabindex="-1" text="Title ..." display-tooltip-when-elided="true" name="message-title" style="flex-grow: 1; font-size: 70%; -unity-text-align: middle-center;" />
+        <ui:Label text="Message ..." display-tooltip-when-elided="true" name="message-detail" tabindex="-1" style="flex-grow: 1; -unity-text-align: upper-center; font-size: 24%;" />
+    </ui:VisualElement>
+</ui:UXML>

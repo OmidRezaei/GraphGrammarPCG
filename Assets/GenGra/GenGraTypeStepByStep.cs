@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace GenGra
 {
     public partial class GenGraType
     {
-        public GraphType GenerateGraph()
+        public IEnumerator<GraphType> GenerationGraphStepByStep()
         {
             IDictionary<string, GraphType> graphs = new Dictionary<string, GraphType>(Graphs.Graph.Length);
             foreach (GraphType graph in Graphs.Graph)
@@ -15,13 +14,20 @@ namespace GenGra
             string startGraphRef = Grammar.StartGraph.@ref;
             GraphType startGraph = graphs[startGraphRef];
 
+            yield return startGraph;
+
             var ruleNumber = 0;
 
             while (true)
             {
                 RuleType[] applicableRules = GetApplicableRules(graphs, startGraph);
 
-                if (applicableRules.Length == 0) return startGraph;
+                if (applicableRules.Length == 0)
+                {
+                    yield return startGraph;
+
+                    yield break;
+                }
 
                 RuleType ruleToApply = applicableRules[
                     applicableRules.Length == 1 ? 0 : Random.Range(0, applicableRules.Length)];
@@ -32,18 +38,9 @@ namespace GenGra
                 GraphType ruleSource = graphs[ruleToApply.source];
                 GraphType ruleTarget = graphs[ruleToApply.target];
                 startGraph.FindAndReplace(ruleSource, ruleTarget);
+
+                yield return startGraph;
             }
-        }
-
-        private RuleType[] GetApplicableRules(IDictionary<string, GraphType> graphs, GraphType startGraph)
-        {
-            return Grammar.Rules.Rule.Where(rule =>
-                                            {
-                                                GraphType ruleSourceGraph = graphs[rule.source];
-
-                                                return startGraph.IsSupergraphOf(ruleSourceGraph);
-                                            }).
-                           ToArray();
         }
     }
 }

@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/GraphRewriteEditor/GraphRewriteMainPanel.uss?fileID=7433441132597879392&amp;guid=0db09cfde62f22f4eac3fd0ca64d6d87&amp;type=3#GraphRewriteMainPanel" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <CommonEditor.SplitView fixed-pane-initial-dimension="200">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <CommonEditor.SplitView orientation="Vertical" fixed-pane-initial-dimension="300" name="left-lists-splitview">
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                        <ui:Label tabindex="-1" text="Graphs" class="listview-title" />
+                        <GraphListView show-border="true" reorderable="true" header-title="Graphs" show-add-remove-footer="true" reorder-mode="Animated" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                        <ui:Label tabindex="-1" text="Rules" display-tooltip-when-elided="true" class="listview-title" />
+                        <RuleListView show-add-remove-footer="true" header-title="Rules" reorderable="true" show-border="true" reorder-mode="Animated" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                </CommonEditor.SplitView>
+            </ui:VisualElement>
+            <ui:VisualElement name="right-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <GraphListView />
+            </ui:VisualElement>
+        </CommonEditor.SplitView>
+    </ui:VisualElement>
+</ui:UXML>

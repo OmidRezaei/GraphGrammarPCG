@@ -1,0 +1,4 @@
+#symbol-textfield > #unity-text-input > TextElement {
+    font-size: 16px;
+    -unity-font-style: bold;
+}

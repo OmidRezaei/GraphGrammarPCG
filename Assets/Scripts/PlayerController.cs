@@ -17,23 +17,43 @@ public class PlayerController : Damageable
 
     private readonly Collider[] enemiesHit = new Collider[5];
 
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private float damagePerAttack;
-    [SerializeField] private float attackRange;
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private int enemiesLayerIndex;
-    
+    [SerializeField]
+    private Camera mainCamera;
+
+    [SerializeField]
+    private NavMeshAgent navMeshAgent;
+
+    [SerializeField]
+    private float damagePerAttack;
+
+    [SerializeField]
+    private float attackRange;
+
+    [SerializeField]
+    private float attackCooldown;
+
+    [SerializeField]
+    private int enemiesLayerIndex;
+
     private IList<Item> inventory;
     private IList<Quest> quests;
     private float currentAttackCooldown;
     private int enemiesLayerMask;
 
-    public void AddItemToInventory(Item item) => inventory.Add(item);
+    public void AddItemToInventory(Item item)
+    {
+        inventory.Add(item);
+    }
 
-    public bool DoesInventoryContainItem(Item item) => inventory.Contains(item);
+    public bool DoesInventoryContainItem(Item item)
+    {
+        return inventory.Contains(item);
+    }
 
-    public void AddQuest(Quest quest) => quests.Add(quest);
+    public void AddQuest(Quest quest)
+    {
+        quests.Add(quest);
+    }
 
     private new void Awake()
     {
@@ -47,19 +67,16 @@ public class PlayerController : Damageable
     private void Start()
     {
         if (navMeshAgent == null)
-        {
             navMeshAgent = GetComponent<NavMeshAgent>();
-        }
 
         if (mainCamera == null)
-        {
             mainCamera = Camera.main;
-        }
     }
 
     private void Update()
     {
         if (IsDead) return;
+
         if (Input.GetMouseButtonDown(0)) MoveToPoint();
         if (Input.GetMouseButtonDown(1)) Attack();
         CoolDownAttackCooldown();
@@ -68,26 +85,28 @@ public class PlayerController : Damageable
     private void MoveToPoint()
     {
         if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 100))
-        {
             navMeshAgent.destination = hit.point;
-        }
     }
 
     private void Attack()
     {
         if (currentAttackCooldown > 0) return;
+
         currentAttackCooldown = attackCooldown;
 
         Physics.OverlapSphereNonAlloc(transform.position, attackRange, enemiesHit, enemiesLayerMask);
+
         foreach (Collider enemyHit in enemiesHit)
         {
-            enemyHit.transform.GetComponent<Enemy>().TakeDamage(damagePerAttack);
+            if (enemyHit && enemyHit.transform.TryGetComponent(out Enemy e))
+                e.TakeDamage(damagePerAttack);
         }
     }
 
     private void CoolDownAttackCooldown()
     {
         if (currentAttackCooldown == 0) return;
+
         currentAttackCooldown -= Time.deltaTime;
         if (currentAttackCooldown <= 0) currentAttackCooldown = 0;
     }
@@ -95,9 +114,7 @@ public class PlayerController : Damageable
     private void OnGUI()
     {
         if (IsDead)
-        {
             DisplayDeathGUI();
-        }
         else
         {
             DisplayHealthGUI();
@@ -116,7 +133,7 @@ public class PlayerController : Damageable
     {
         float healthX = Screen.width - HealthGUIWidth - GUIOffset;
         double roundedHealth = CurrentHealth == 0 ? 0 : Math.Round(CurrentHealth, MidpointRounding.AwayFromZero);
-        string healthText = $"HEALTH: {roundedHealth}";
+        var healthText = $"HEALTH: {roundedHealth}";
 
         GUI.Box(new Rect(healthX, GUIOffset, HealthGUIWidth, HealthGUIHeight), healthText);
     }
@@ -124,12 +141,13 @@ public class PlayerController : Damageable
     private void DisplayQuestsGUI()
     {
         int numIncompleteQuests = quests.Count(quest => !quest.IsCompleted());
+
         if (numIncompleteQuests == 0) return;
+
         float questsHeight = QuestsGUIInitialHeight + QuestsGUIHeightPerQuest * numIncompleteQuests;
-        string questsText = quests
-            .Where(quest => !quest.IsCompleted())
-            .Select(quest => quest.QuestName())
-            .Aggregate("QUESTS:", (str, questName) => $"{str}\n{questName}");
+        string questsText = quests.Where(quest => !quest.IsCompleted()).
+                                   Select(quest => quest.QuestName()).
+                                   Aggregate("QUESTS:", (str, questName) => $"{str}\n{questName}");
 
         GUI.Box(new Rect(GUIOffset, GUIOffset, QuestsGUIWidth, questsHeight), questsText);
     }

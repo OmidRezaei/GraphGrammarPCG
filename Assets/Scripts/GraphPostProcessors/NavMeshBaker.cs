@@ -14,17 +14,20 @@ namespace GenGra
                 {
                     foreach (Transform child in spaceObject.transform)
                     {
-                        if (child.CompareTag("Navigatable")) 
+                        if (child.CompareTag("Navigatable"))
                         {
                             NavMeshSurface navMeshSurface = child.GetComponent<NavMeshSurface>();
                             if (navMeshSurface != null)
-                            {
                                 navMeshSurface.BuildNavMesh();
-                            }
                         }
                     }
                 }
             }
+
+            var go = new GameObject();
+            NavMeshSurface s = go.AddComponent<NavMeshSurface>();
+            s.layerMask = LayerMask.GetMask("Bake NavMesh");
+            s.BuildNavMesh();
         }
     }
 }

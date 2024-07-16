@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/GraphRewriteEditor/SimulationOptions.uss?fileID=7433441132597879392&amp;guid=c500485b7e6556b47b3dac0c4e0c8b26&amp;type=3#SimulationOptions" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); padding-top: 20px; min-width: 200px; padding-left: 5px; padding-right: 5px; padding-bottom: 5px;">
+        <uie:Toolbar>
+            <uie:ToolbarButton name="start-button" class="start-button" style="flex-grow: 1; display: none;" />
+            <uie:ToolbarButton name="reset-button" class="reset-button" style="flex-grow: 1;" />
+            <uie:ToolbarButton name="step-back-button" class="step-back-button" style="flex-grow: 1;" />
+            <uie:ToolbarButton name="step-forward-button" class="step-forward-button" style="flex-grow: 1;" />
+        </uie:Toolbar>
+        <ui:VisualElement name="details-container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); margin-top: 5px;">
+            <ui:IntegerField label="Seed" value="-1" name="seed-intfield" class="short-label-field" />
+            <ui:SliderInt label="Step" value="42" high-value="0" name="step-slider" show-input-field="true" class="short-label-field" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

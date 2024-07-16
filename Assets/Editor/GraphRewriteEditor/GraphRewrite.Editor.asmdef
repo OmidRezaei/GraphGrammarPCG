@@ -1,0 +1,19 @@
+{
+    "name": "GraphRewrite.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f77f13a91363d074887a48913573c32c",
+        "GUID:ff32c314fd624ab43aef08ecedc33d52"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

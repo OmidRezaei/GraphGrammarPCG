@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Editor/GraphRewriteEditor/GraphNode.uss?fileID=7433441132597879392&amp;guid=c44dc8ea1ef36314a98a885c21f34dab&amp;type=3#GraphNode" />
+    <ui:VisualElement style="background-color: rgb(0, 0, 0); min-width: 50px; min-height: 50px; border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; border-top-left-radius: 8px; border-bottom-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px;">
+        <ui:Label text="Label" name="id-label" picking-mode="Ignore" enable-rich-text="false" tabindex="-1" style="color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 18px; -unity-font-style: bold;" />
+        <ui:TextField picking-mode="Ignore" name="symbol-textfield" is-delayed="true" />
+    </ui:VisualElement>
+</ui:UXML>

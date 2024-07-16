@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/GraphRewriteEditor/MainPanelToolbar.uss?fileID=7433441132597879392&amp;guid=1f5555871d8fa4d44b0f18417432dad9&amp;type=3#MainPanelToolbar" />
+    <uie:Toolbar>
+        <uie:ToolbarButton text="Button" display-tooltip-when-elided="true" name="save-button" />
+        <uie:ToolbarSpacer />
+        <uie:ToolbarButton text="Button" display-tooltip-when-elided="true" />
+    </uie:Toolbar>
+</ui:UXML>

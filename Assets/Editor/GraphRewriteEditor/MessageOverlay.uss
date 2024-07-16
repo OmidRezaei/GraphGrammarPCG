@@ -1,0 +1,3 @@
+:root.hide {
+    display: none;
+}
